@@ -3,14 +3,14 @@ Multivariable Linear Regression Project
 Assignment 6 Part 3
 
 Group Members:
-- 
-- 
-- 
+- Patrick Nyman
+- Alex Zhou
+- Max Pryzbyl
 - 
 
-Dataset: [Name of your dataset]
-Predicting: [What you're predicting]
-Features: [List your features]
+Dataset: VideoGames_Sales.csv
+Predicting: Game sales
+Features: Genre, console, critic score
 """
 
 import pandas as pd
