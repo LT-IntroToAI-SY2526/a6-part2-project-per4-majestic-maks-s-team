@@ -6,7 +6,6 @@ Group Members:
 - Patrick Nyman
 - Alex Zhou
 - Max Pryzbyl
-- 
 
 Dataset: VideoGames_Sales.csv
 Predicting: Game sales
@@ -39,8 +38,22 @@ def load_and_explore_data(filename):
     print("=" * 70)
     
     # Your code here
+    data = pd.read_csv(filename)
     
-    pass
+    print("=== Price Data ===")
+    print(f"\nFirst 5 rows:")
+    print(data.head())
+    
+    print(f"\nDataset shape: {data.shape[0]} rows, {data.shape[1]} columns")
+    
+    print(f"\nBasic statistics:")
+    print(data.describe())
+    
+    print(f"\nColumn names: {list(data.columns)}")
+    
+    return data
+    
+    #pass
 
 
 def visualize_data(data):
@@ -63,7 +76,7 @@ def visualize_data(data):
     
     # Your code here
     # Hint: Use subplots like in Part 2!
-    
+    #fig, axes = plt.subplots 
     pass
 
 
