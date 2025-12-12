@@ -20,7 +20,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 
 # TODO: Update this with your actual filename
-DATA_FILE = 'your_data.csv'
+DATA_FILE =  'VideoGames_Sales.csv'
 
 def load_and_explore_data(filename):
     """
@@ -38,20 +38,20 @@ def load_and_explore_data(filename):
     print("=" * 70)
     
     # Your code here
-    data = pd.read_csv(filename)
+    #data = pd.read_csv(filename)
     
-    print("=== Price Data ===")
-    print(f"\nFirst 5 rows:")
-    print(data.head())
+    # print("=== Price Data ===")
+    # print(f"\nFirst 5 rows:")
+    # print(data.head())
     
-    print(f"\nDataset shape: {data.shape[0]} rows, {data.shape[1]} columns")
+    # print(f"\nDataset shape: {data.shape[0]} rows, {data.shape[1]} columns")
     
-    print(f"\nBasic statistics:")
-    print(data.describe())
+    # print(f"\nBasic statistics:")
+    # print(data.describe())
     
-    print(f"\nColumn names: {list(data.columns)}")
+    # print(f"\nColumn names: {list(data.columns)}")
     
-    return data
+    # return data
     
     #pass
 
