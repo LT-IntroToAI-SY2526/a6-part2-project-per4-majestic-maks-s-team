@@ -19,10 +19,14 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 
-# TODO: Update this with your actual filename
-DATA_FILE =  'VideoGames_Sales.csv'
+DATA_FILE = 'VideoGames_Sales.csv'
 
-# Drop unused columns
+# Read CSV into a DataFrame
+df = pd.read_csv(DATA_FILE, on_bad_lines="skip")
+
+# FIX: remove leading/trailing spaces from column names
+df.columns = df.columns.str.strip()
+
 columns_to_drop = [
     "title",
     "publisher",
@@ -33,18 +37,16 @@ columns_to_drop = [
     "other_sales(mil)"
 ]
 
-df = DATA_FILE.drop(columns=columns_to_drop)
+df = df.drop(columns=columns_to_drop)
 
-# Convert total sales into integer
-df["total_sales(mil)"] = (
-    df["total_sales(mil)"]
-    .str.replace("$", "", regex=False)
-    .astype(float)
+# Convert total sales to float safely
+df["total_sales(mil)"] = pd.to_numeric(
+    df["total_sales(mil)"], errors="coerce"
 )
 
 # Convert other values
 df["critic_score"] = pd.to_numeric(df["critic_score"], errors="coerce")
-df["release_date"] = pd.to_datetime(df["release_date"])
+df["release_date"] = pd.to_datetime(df["release_date"], errors="coerce")
 df["console_code"] = df["console"].astype("category").cat.codes
 df["genre_code"] = df["genre"].astype("category").cat.codes
 
@@ -79,9 +81,6 @@ def load_and_explore_data(filename):
     # print(f"\nColumn names: {list(data.columns)}")
     
     # return data 
-
-
-df = df.drop(columns=columns_to_drop)
 
 
 def visualize_data(data):
