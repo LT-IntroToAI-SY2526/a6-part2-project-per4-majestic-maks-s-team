@@ -103,10 +103,24 @@ def visualize_data(data):
     print("=" * 70)
     
     # Your code here
-    # Hint: Use subplots like in Part 2!
-    #fig, axes = plt.subplots 
-    pass
+    feature_columns = ["price", "platform", "genre", "review_score", "release_date"]
+    target_column = ["sales"]
 
+    plt.figure(figsize =(12, 10))
+
+    for i, feature in enumerate(feature_columns):
+        plt.subplot(2, 2, i + 1)
+        plt.scatter(data[feature], data[target_column])
+        plt.xlabel(feature)
+        plt.ylabel(target_column)
+        plt.title(f"{feature}" vs {target_column})
+    
+    plt.tight_layout()
+    plt.savefig("feature_vs_sales.png")
+    plt.show
+
+    print("Scatter plots savd as feature_vs_sales.png")
+    print("Look for features with a clear upward or downward trend - those are MOST IMPORTANT!!!!!")
 
 def prepare_and_split_data(data):
     """
