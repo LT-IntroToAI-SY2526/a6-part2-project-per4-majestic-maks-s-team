@@ -83,6 +83,7 @@ def load_and_explore_data(filename):
 
     return data
 
+
 def visualize_data(data):
     """
     Create visualizations to understand your data
@@ -100,26 +101,26 @@ def visualize_data(data):
     print("\n" + "=" * 70)
     print("VISUALIZING RELATIONSHIPS")
     print("=" * 70)
+    
+    # Your code here
+    feature_columns = ["price", "platform", "genre", "review_score", "release_date"]
+    target_column = ["sales"]
 
-    # Use the cleaned column names
-    feature_columns = ["critic_score", "console_code", "genre_code", "release_date"]
-    target_column = "total_sales(mil)"
-
-    plt.figure(figsize=(14, 10))
+    plt.figure(figsize =(12, 10))
 
     for i, feature in enumerate(feature_columns):
         plt.subplot(2, 2, i + 1)
-        plt.scatter(data[feature], data[target_column], alpha=0.5)
+        plt.scatter(data[feature], data[target_column])
         plt.xlabel(feature)
         plt.ylabel(target_column)
-        plt.title(f"{feature} vs {target_column}")
-
+        plt.title(f"{feature}" vs {target_column})
+    
     plt.tight_layout()
     plt.savefig("feature_vs_sales.png")
-    plt.show()
+    plt.show
 
-    print("Scatter plots saved as feature_vs_sales.png")
-    print("Look for features with a clear upward or downward trend - those are MOST IMPORTANT!")
+    print("Scatter plots savd as feature_vs_sales.png")
+    print("Look for features with a clear upward or downward trend - those are MOST IMPORTANT!!!!!")
 
 def prepare_and_split_data(data):
     """
@@ -227,8 +228,8 @@ if __name__ == "__main__":
     # Step 1: Load and explore
     data = load_and_explore_data(DATA_FILE)
     
-    # Step 2: Visualize *commented out for performance
-    # visualize_data(data)
+    # Step 2: Visualize
+    visualize_data(data)
     
     # Step 3: Prepare and split
     X_train, X_test, y_train, y_test = prepare_and_split_data(data)
@@ -251,3 +252,4 @@ if __name__ == "__main__":
     print("3. Create your presentation")
     print("4. Practice presenting with your group!")
 
+#https://suroi.io/?region=na#jqvd
