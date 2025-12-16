@@ -124,28 +124,26 @@ def visualize_data(data):
 def prepare_and_split_data(data):
     """
     Prepare X and y, then split into train/test
-    
-    TODO:
-    - Separate features (X) and target (y)
-    - Split into train/test (80/20)
-    - Print the sizes
-    
-    Args:
-        data: your DataFrame
-        feature_columns: list of feature column names
-        target_column: name of target column
-        
-    Returns:
-        X_train, X_test, y_train, y_test
-    """
+
     print("\n" + "=" * 70)
     print("PREPARING AND SPLITTING DATA")
     print("=" * 70)
-    
+    """
     # Your code here
-    
-    pass
+    feature_columns = ["price", "platform", "genre", "review_score", "release_date"]
+    target_column = ["sales"]
 
+    X = data = [feature_columns]
+    y = data[target_column]
+
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
+       # Print sizes
+    print("X_train shape:", X_train.shape)
+    print("X_test shape:", X_test.shape)
+    print("y_train shape:", y_train.shape)
+    print("y_test shape:", y_test.shape)
 
 def train_model(X_train, y_train):
     """
