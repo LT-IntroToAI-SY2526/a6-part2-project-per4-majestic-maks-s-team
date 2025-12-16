@@ -18,6 +18,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
+
+# TODO: Update this with your actual filename
+DATA_FILE =  'VideoGames_Sales.csv'
+
+# Drop unused columns
 columns_to_drop = [
     "title",
     "publisher",
@@ -28,20 +33,21 @@ columns_to_drop = [
     "other_sales(mil)"
 ]
 
-df = df.drop(columns=columns_to_drop)
+df = DATA_FILE.drop(columns=columns_to_drop)
 
-# TODO: Update this with your actual filename
-DATA_FILE =  'VideoGames_Sales.csv'
+# Convert total sales into integer
 df["total_sales(mil)"] = (
     df["total_sales(mil)"]
     .str.replace("$", "", regex=False)
     .astype(float)
 )
 
+# Convert other values
 df["critic_score"] = pd.to_numeric(df["critic_score"], errors="coerce")
 df["release_date"] = pd.to_datetime(df["release_date"])
 df["console_code"] = df["console"].astype("category").cat.codes
 df["genre_code"] = df["genre"].astype("category").cat.codes
+
 
 def load_and_explore_data(filename):
     """
