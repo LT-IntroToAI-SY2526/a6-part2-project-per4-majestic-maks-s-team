@@ -66,21 +66,22 @@ def load_and_explore_data(filename):
     print("LOADING AND EXPLORING DATA")
     print("=" * 70)
     
-    # Your code here
-    #data = pd.read_csv(filename)
-    
-    # print("=== Price Data ===")
-    # print(f"\nFirst 5 rows:")
-    # print(data.head())
-    
-    # print(f"\nDataset shape: {data.shape[0]} rows, {data.shape[1]} columns")
-    
-    # print(f"\nBasic statistics:")
-    # print(data.describe())
-    
-    # print(f"\nColumn names: {list(data.columns)}")
-    
-    # return data 
+    # Load the already dropped version of the CSV file
+    global df
+    data = df
+
+    print("\nFirst 5 rows:")
+    print(data.head())
+
+    print(f"\nDataset shape: {data.shape[0]} rows, {data.shape[1]} columns")
+
+    print("\nBasic statistics:")
+    print(data.describe())
+
+    print("\nColumn names:")
+    print(list(data.columns))
+
+    return data
 
 
 def visualize_data(data):
