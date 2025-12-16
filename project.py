@@ -18,9 +18,30 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
+columns_to_drop = [
+    "title",
+    "publisher",
+    "developer",
+    "na_sales(mil)",
+    "jp_sales(mil)",
+    "pal_sales(mil)",
+    "other_sales(mil)"
+]
+
+df = df.drop(columns=columns_to_drop)
 
 # TODO: Update this with your actual filename
 DATA_FILE =  'VideoGames_Sales.csv'
+df["total_sales(mil)"] = (
+    df["total_sales(mil)"]
+    .str.replace("$", "", regex=False)
+    .astype(float)
+)
+
+df["critic_score"] = pd.to_numeric(df["critic_score"], errors="coerce")
+df["release_date"] = pd.to_datetime(df["release_date"])
+df["console_code"] = df["console"].astype("category").cat.codes
+df["genre_code"] = df["genre"].astype("category").cat.codes
 
 def load_and_explore_data(filename):
     """
@@ -37,20 +58,24 @@ def load_and_explore_data(filename):
     print("LOADING AND EXPLORING DATA")
     print("=" * 70)
     
-    data = pd.read_csv(filename)
+    # Your code here
+    #data = pd.read_csv(filename)
     
-    print("=== Price Data ===")
-    print(f"\nFirst 5 rows:")
-    print(data.head)
+    # print("=== Price Data ===")
+    # print(f"\nFirst 5 rows:")
+    # print(data.head())
     
-    print(f"\nDataset shape: {data.shape[0]} rows, {data.shape[1]} columns")
+    # print(f"\nDataset shape: {data.shape[0]} rows, {data.shape[1]} columns")
     
-    print(f"\nBasic statistics:")
-    print(data.describe())
+    # print(f"\nBasic statistics:")
+    # print(data.describe())
     
-    print(f"\nColumn names: {list(data.columns)}")
+    # print(f"\nColumn names: {list(data.columns)}")
     
-    return data
+    # return data 
+
+
+df = df.drop(columns=columns_to_drop)
 
 
 def visualize_data(data):
