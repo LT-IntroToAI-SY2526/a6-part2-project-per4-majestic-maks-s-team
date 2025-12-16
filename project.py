@@ -252,4 +252,3 @@ if __name__ == "__main__":
     print("3. Create your presentation")
     print("4. Practice presenting with your group!")
 
-#https://suroi.io/?region=na#jqvd
