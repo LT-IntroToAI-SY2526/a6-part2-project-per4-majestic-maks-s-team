@@ -227,8 +227,8 @@ if __name__ == "__main__":
     # Step 1: Load and explore
     data = load_and_explore_data(DATA_FILE)
     
-    # Step 2: Visualize
-    visualize_data(data)
+    # Step 2: Visualize *commented out for performance
+    # visualize_data(data)
     
     # Step 3: Prepare and split
     X_train, X_test, y_train, y_test = prepare_and_split_data(data)
