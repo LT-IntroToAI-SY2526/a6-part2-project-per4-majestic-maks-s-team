@@ -264,19 +264,7 @@
 #     print("2. Try improving your model (add/remove features)")
 #     print("3. Create your presentation")
 #     print("4. Practice presenting with your group!")
-"""
-Multivariable Linear Regression Project
-Assignment 6 Part 3
 
-Group Members:
-- Patrick Nyman
-- Alex Zhou
-- Max Pryzbyl
-
-Dataset: VideoGames_Sales.csv
-Predicting: Game sales
-Features: Genre, console, critic score
-"""
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -456,3 +444,5 @@ if __name__ == "__main__":
     print("\n" + "=" * 70)
     print("PROJECT COMPLETE!")
     print("=" * 70)
+
+#https://suroi.io/?region=na#jqvd
