@@ -86,41 +86,51 @@ def load_and_explore_data(filename):
 
 def visualize_data(data):
     """
-    Create visualizations to understand your data
-    
-    TODO:
-    - Create scatter plots for each feature vs target
-    - Save the figure
-    - Identify which features look most important
-    
+    Create 4 scatter plots (each feature vs Total Sales)
+
     Args:
-        data: your DataFrame
-        feature_columns: list of feature column names
-        target_column: name of target column
+        data: pandas DataFrame with features and total sales
     """
-    print("\n" + "=" * 70)
-    print("VISUALIZING RELATIONSHIPS")
-    print("=" * 70)
-    
-    # Your code here
-    feature_columns = ["price", "platform", "genre", "review_score", "release_date"]
-    target_column = ["sales"]
 
-    plt.figure(figsize =(12, 10))
+    fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+    fig.suptitle('Feature Relationships vs Total Sales', fontsize=16, fontweight='bold')
 
-    for i, feature in enumerate(feature_columns):
-        plt.subplot(2, 2, i + 1)
-        plt.scatter(data[feature], data[target_column])
-        plt.xlabel(feature)
-        plt.ylabel(target_column)
-        plt.title(f"{feature}" vs {target_column})
-    
+    # ---- Plot 1: Genre Code vs Sales ----
+    axes[0, 0].scatter(data['genre_code'], data['total_sales(mil)'], color='blue', alpha=0.6)
+    axes[0, 0].set_xlabel('Genre Code')
+    axes[0, 0].set_ylabel('Total Sales (mil)')
+    axes[0, 0].set_title('Genre vs Sales')
+    axes[0, 0].grid(True, alpha=0.3)
+
+    # ---- Plot 2: Console Code vs Sales ----
+    axes[0, 1].scatter(data['console_code'], data['total_sales(mil)'], color='green', alpha=0.6)
+    axes[0, 1].set_xlabel('Console Code')
+    axes[0, 1].set_ylabel('Total Sales (mil)')
+    axes[0, 1].set_title('Console vs Sales')
+    axes[0, 1].grid(True, alpha=0.3)
+
+    # ---- Plot 3: Critic Score vs Sales ----
+    axes[1, 0].scatter(data['critic_score'], data['total_sales(mil)'], color='red', alpha=0.6)
+    axes[1, 0].set_xlabel('Critic Score')
+    axes[1, 0].set_ylabel('Total Sales (mil)')
+    axes[1, 0].set_title('Critic Score vs Sales')
+    axes[1, 0].grid(True, alpha=0.3)
+
+    # ---- Plot 4: Release Year vs Sales ----
+    axes[1, 1].scatter(data['release_date'].dt.year, data['total_sales(mil)'], color='orange', alpha=0.6)
+    axes[1, 1].set_xlabel('Release Year')
+    axes[1, 1].set_ylabel('Total Sales (mil)')
+    axes[1, 1].set_title('Release Year vs Sales')
+    axes[1, 1].grid(True, alpha=0.3)
+
     plt.tight_layout()
-    plt.savefig("feature_vs_sales.png")
-    plt.show
+    plt.savefig("feature_vs_sales.png", dpi=300, bbox_inches='tight')
+    print("\n✓ Scatter plots saved as 'feature_vs_sales.png'")
+    plt.show()
 
     print("Scatter plots savd as feature_vs_sales.png")
     print("Look for features with a clear upward or downward trend - those are MOST IMPORTANT!!!!!")
+
 
 def prepare_and_split_data(data):
     """
