@@ -322,3 +322,12 @@ if __name__ == "__main__":
     print("  ✓ Freed memory with garbage collection")
     print("\nYour graphs are saved as 'feature_vs_sales.png'")
 
+    print("\nGenre codes:")
+for code, name in genre_map.items():
+    print(f"  {code}: {name}")
+
+print("\nConsole codes:")
+for code, name in console_map.items():
+    print(f"  {code}: {name}")
+
+
